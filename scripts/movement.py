@@ -20,6 +20,9 @@ def main(cont):
     sPos = s.positive or down.positive
     dPos = d.positive or right.positive
 
+    if own["resetTimer"] > 2.0:
+        own.restorePhysics()
+
     maxSpeed = own["maxSpeed"]
 
     if wPos or sPos:
@@ -123,7 +126,7 @@ def main(cont):
         own.scene.objects["Camera"]["nextLevel"] = True
 
     if own.scene.objects["Camera"]["level"] == 1:
-        if own["fruits"] > 11:
+        if own["fruits"] >= 12:
             own.scene.objects["ender"].visible = True
             own.scene.objects["ender"].worldPosition.x = -19.724
             own.scene.objects["ender"].worldPosition.y = 353.455
@@ -133,6 +136,25 @@ def main(cont):
             own.scene.objects["ender"].worldPosition.x = -19.724
             own.scene.objects["ender"].worldPosition.y = 353.455
             own.scene.objects["ender"].worldPosition.z = -555512.0
+
+    elif own.scene.objects["Camera"]["level"] == 2:
+        if own["fruits"] >= 22:
+            own.scene.objects["ender"].visible = True
+            own.scene.objects["ender"].worldPosition.x = -19.724
+            own.scene.objects["ender"].worldPosition.y = 624.08
+            own.scene.objects["ender"].worldPosition.z = 12.0346
+        else:
+            own.scene.objects["ender"].visible = False
+            own.scene.objects["ender"].worldPosition.x = -19.724
+            own.scene.objects["ender"].worldPosition.y = 353.455
+            own.scene.objects["ender"].worldPosition.z = -555512.0
+    elif own.scene.objects["Camera"]["level"] == 3:
+        own.scene.objects["ender"].visible = False
+        own.scene.objects["ender"].worldPosition.x = -19.724
+        own.scene.objects["ender"].worldPosition.y = 353.455
+        own.scene.objects["ender"].worldPosition.z = -555512.0
+        
+        own["farmers"] = 9999
 
     else:
         own.scene.objects["ender"].visible = False

@@ -20,6 +20,14 @@ COLORS = {
 SCALEFACTOR = 5.8/7.0
 
 
+def veggie(cont):
+    own = cont.owner
+    if bge.logic.getSceneList()["Scene"].objects["Camera"]["level"] == 3:
+        own.visible = True
+    else:
+        own.visible = False
+
+
 def LD(cont):
     own = cont.owner
     player = bge.logic.getSceneList()["Scene"].objects["Player"]

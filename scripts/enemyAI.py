@@ -8,6 +8,7 @@ def run(cont):
     if own["move"]:
 
         if own["shootingTimer"] > 0.5:
+            
             cont.deactivate(cont.actuators["run"])
             cont.activate(cont.actuators["shootAnim"])
             cont.activate(cont.actuators["shoot"])
