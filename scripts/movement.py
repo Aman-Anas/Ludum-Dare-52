@@ -103,7 +103,7 @@ def main(cont):
 
             if own["farmers"] > 0:
                 own.scene.addObject(
-                    "farmer", own.scene.objects["enemyShooter"], 1200)
+                    "farmer", own.scene.objects["enemyShooter"], 3600)
                 own["farmers"] -= 1
 
     else:
@@ -153,7 +153,7 @@ def main(cont):
         own.scene.objects["ender"].worldPosition.x = -19.724
         own.scene.objects["ender"].worldPosition.y = 353.455
         own.scene.objects["ender"].worldPosition.z = -555512.0
-        
+
         own["farmers"] = 9999
 
     else:
