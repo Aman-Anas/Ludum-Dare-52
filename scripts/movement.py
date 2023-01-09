@@ -122,6 +122,24 @@ def main(cont):
     if cont.sensors["warp"].positive:
         own.scene.objects["Camera"]["nextLevel"] = True
 
+    if own.scene.objects["Camera"]["level"] == 1:
+        if own["fruits"] > 11:
+            own.scene.objects["ender"].visible = True
+            own.scene.objects["ender"].worldPosition.x = -19.724
+            own.scene.objects["ender"].worldPosition.y = 353.455
+            own.scene.objects["ender"].worldPosition.z = 12.0346
+        else:
+            own.scene.objects["ender"].visible = False
+            own.scene.objects["ender"].worldPosition.x = -19.724
+            own.scene.objects["ender"].worldPosition.y = 353.455
+            own.scene.objects["ender"].worldPosition.z = -555512.0
+
+    else:
+        own.scene.objects["ender"].visible = False
+        own.scene.objects["ender"].worldPosition.x = -19.724
+        own.scene.objects["ender"].worldPosition.y = 353.455
+        own.scene.objects["ender"].worldPosition.z = -555512.0
+
 
 def alignAxisTo(own, obj, axis, rate):
 

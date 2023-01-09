@@ -4,7 +4,7 @@ def next(cont):
         own.scene.suspend()
 
         for obj in own.scene.objects:
-            if ("level"+str(own["level"])) in obj:
+            if (("level"+str(own["level"])) in obj) or ("del" in obj):
                 if obj.parent == None:
                     obj.endObject()
         own["level"] += 1
