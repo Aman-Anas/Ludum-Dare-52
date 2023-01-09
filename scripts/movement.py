@@ -87,17 +87,40 @@ def main(cont):
         own.scene.objects["bonkstick"].visible = False
         own.scene.objects["bonkstick"].suspendPhysics()
 
-    ### TODO: attacking
+    if own["weapon"] == "shooter":
+        own.scene.objects["enemyShooter"].visible = True
+    else:
+        own.scene.objects["enemyShooter"].visible = False
     if leftClick.positive:
         # cont.activate(cont.actuators["attack"])
         if own["weapon"] == "bonk":
             cont.activate(cont.actuators["bonk"])
+
+        if own["weapon"] == "shooter":
+
+            if own["farmers"] > 0:
+                own.scene.addObject(
+                    "farmer", own.scene.objects["enemyShooter"], 1200)
+                own["farmers"] -= 1
+
     else:
         cont.deactivate(cont.actuators["bonk"])
 
     if own.getDistanceTo(own.scene.objects["food"]) > 14:
         own.scene.objects["food"].worldPosition = own.worldPosition + \
             Vector((0, 0, 2))
+
+    if cont.sensors["T"].positive:
+        if own["weapon"] == "bonk":
+            own["weapon"] = "shooter"
+        else:
+            own["weapon"] = "bonk"
+
+    if cont.sensors["hurt"].positive:
+        own["health"] -= 10
+
+    if cont.sensors["warp"].positive:
+        own.scene.objects["Camera"]["nextLevel"] = True
 
 
 def alignAxisTo(own, obj, axis, rate):

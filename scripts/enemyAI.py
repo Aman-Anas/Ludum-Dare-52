@@ -22,3 +22,11 @@ def addEnemyBag(cont):
         own = cont.owner
         player = own.scene.objects["Player"]
         player["farmers"] += 1
+
+
+def die(cont):
+    if cont.sensors["Collision"].positive:
+        own = cont.owner
+        cont.activate(cont.actuators["explode"])
+        own.scene.objects["Player"]["farmers"] += 1
+        own.endObject()

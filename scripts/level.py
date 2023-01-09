@@ -1,13 +1,12 @@
-import bge
-
-
-def next(cont: bge.types.SCA_PythonController):
+def next(cont):
     if cont.sensors["next"].positive:
         own = cont.owner
         own.scene.suspend()
+
         for obj in own.scene.objects:
             if ("level"+str(own["level"])) in obj:
-                own.endObject()
+                if obj.parent == None:
+                    obj.endObject()
         own["level"] += 1
         for obj in own.scene.objectsInactive:
             if ("level"+str(own["level"])) in obj:
